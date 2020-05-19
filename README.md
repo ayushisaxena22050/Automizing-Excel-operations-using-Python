@@ -12,6 +12,8 @@ Images formatting can be easily done by PIL.
 --pip install Pillow.
 
 Pasting images in Excel files can't be handled by Pandas itself that why I have used xlsxwriter create a writer instance using below code:
+
 --pip install xlsxwriter
+
 writer = pd.ExcelWriter('file.xlsx', engine='xlsxwriter')
 
