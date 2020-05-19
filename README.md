@@ -5,13 +5,13 @@ It's generally a time consuming task to fetch values from different tables and t
 
 Here pandas comes to the rescue for calculation task.
 
-## pip install pandas
+# pip install pandas
 
 Images formatting can be easily done by PIL.
 
-## pip install Pillow.
+# pip install Pillow.
 
 Pasting images in Excel files can't be handled by Pandas itself that why I have used xlsxwriter create a writer instance using below code:
-## pip install xlsxwriter
-## writer = pd.ExcelWriter('file.xlsx', engine='xlsxwriter')
+# pip install xlsxwriter
+# writer = pd.ExcelWriter('file.xlsx', engine='xlsxwriter')
 
