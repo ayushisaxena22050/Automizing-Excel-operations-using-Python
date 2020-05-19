@@ -15,7 +15,9 @@ if __name__ =='__main__':
             sales_data = pd.read_excel(r"D:\demo\Sales_data\sample File.xlsx", sheet_name="Sale data")
             mapping_file = pd.read_csv(r'D:\demo\DATATABLE CHANNEL ITEM TYPE 10-1-19.csv')
             sales_data = sales_data.reset_index()
+            # Replacing SKU which are in Channel Product Id by SKU code from mapping File.
             sales_data.loc[sales_data.Sku.isin(mapping_file['Channel Product Id']), 'Sku'] = mapping_file['SKU Code']
+            # Merging simple with Sales data.
             simple_final = sales_data.merge(simple, right_on="Sku", left_on="Sku")[["Sku", "Sales", "Bundle/single_x"]]
             # print(simple_final)
 
@@ -32,11 +34,13 @@ if __name__ =='__main__':
 
             data2['Item_Name'] = data2.merge(simple, right_on="Sku", left_on="Component Product Code")['Item Name']
             data2 = data2.sort_values(by='Sales_Quantity', ascending=False)
-            data2["SKU_url"] = str("https://cdn.shopify.com/s/files/1/0912/9966/files/") + data2["Component Product Code"] + str("_thumb.JPG?v=1577958450")
+            # Getting image url for all of the component products.
+            data2["SKU_url"] = str("url") + data2["Component Product Code"] + str("_thumb.JPG?v=1577958450")
             data2["Product_Image"] = ""
 
             data2=data2.reset_index()
             data2=data2[['Component Product Code', 'Item_Name','Sales_Quantity','SKU_url','Product_Image']]
-            print("First Part Done..!!")
+    # for downloading images
     downloads(data2)
+    # for pasting images in a excel file.
     paste_image(data2)
